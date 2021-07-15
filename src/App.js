@@ -16,8 +16,8 @@ let url = ""
 
 function App() {
 
-  const [condicion, setCondicion] = useState(true)
-  const [condicion2, setCondicion2] = useState(false)
+  const [controlarSeccion, setControlarSeccion] = useState(true)
+  const [controlarSeccion2, setControlarSeccion2] = useState(false)
   const [nombre, setNombre] = useState('')
   const [contrasena, setContrasena] = useState('')
   const [repositorios, setRepositorios] = useState([])
@@ -40,7 +40,7 @@ function App() {
         icon: 'success',
         title: "Bienvenido",
       })
-      setCondicion(bol)
+      setControlarSeccion(bol)
       a = tomarid()
       let nombres = getData()
       if (localStorage.getItem('usuarios') === null) {
@@ -50,7 +50,7 @@ function App() {
         b = (nombres[a].nom)
       }
       url = `https://api.github.com/users/${b}/repos`
-      setCondicion2(true)
+      setControlarSeccion2(true)
     } else {
       Swal.fire(
         'Datos incorrectos',
@@ -87,8 +87,8 @@ function App() {
 
   const cerrarSesion = (e) => {
     e.preventDefault()
-    setCondicion(true)
-    setCondicion2(false)
+    setControlarSeccion(true)
+    setControlarSeccion2(false)
     localStorage.setItem('repositorios',[ ])
   }
 
@@ -97,7 +97,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a href="./" className="navbar-brand">Test<b>Coding</b></a>
         <div className="navbar-nav ml-auto action-buttons">
-          {condicion &&
+          {controlarSeccion &&
             <div className="nav-item dropdown">
               <a href="./" data-toggle="dropdown" className="nav-link dropdown-toggle mr-4">Login</a>
               <div className="dropdown-menu action-form">
@@ -113,7 +113,7 @@ function App() {
                 </form>
               </div>
             </div>}
-          {condicion &&
+          {controlarSeccion &&
             <div className="nav-item dropdown">
               <a href="./" data-toggle="dropdown" className="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
               <div className="dropdown-menu action-form">
@@ -129,7 +129,7 @@ function App() {
                 </form>
               </div>
             </div>}
-          {condicion2 &&
+          {controlarSeccion2 &&
             <div className="nav-item dropdown">
               <div className="dropdown-menu1">
                 <form id="fnewUsuario" type="submit" onSubmit={cerrarSesion}>
@@ -139,9 +139,9 @@ function App() {
             </div>}
         </div>
       </nav>
-      {condicion &&
+      {controlarSeccion &&
         <Imagen />}
-      {condicion2 &&
+      {controlarSeccion2 &&
         <ListarRepo repos={repositorios} n={a} />}
     </div>
   );
