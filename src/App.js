@@ -12,7 +12,7 @@ let obj = [];
 let bol = true
 let b = []
 let a = 0
-let url = ""
+let url = 'url = `https://api.github.com/users/%user%/repos`';
 
 function App() {
 
@@ -49,7 +49,7 @@ function App() {
       } else {
         b = (nombres[a].nom)
       }
-      url = `https://api.github.com/users/${b}/repos`
+      url = url.replace('%user%', b);
       setControlarSeccion2(true)
     } else {
       Swal.fire(
