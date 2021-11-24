@@ -1,47 +1,44 @@
 .containerOwnApp {
-    box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
-    padding-top: 15px;
- }
-  
- .login-page {
-   padding: 18% 0 0;
-   margin: 0 auto 100px;
-   max-width: 360px;
-   position: relative;
- }
-  
- .login-form {
-    box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
-    margin: 1px;
- }
-  
- .login-form-header {
-    padding-top: 16px;
- }
-  
- .login-from-row {
-    
-    padding-left: 8px;
-    padding-top: 16px;
-    padding-bottom: 16px;
- }
-  
- .login-form-font-header {
-    font-size:30px; 
-    font-weight: bold;
- }
-  
- .login-form-font-header span {
-    color: #007C9B;
- }
+	box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
+	padding-top: 15px;
+}
 
+.login-page {
+	padding: 18% 0 0;
+	margin: 0 auto 100px;
+	max-width: 360px;
+	position: relative;
+}
 
+.login-form {
+	box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
+	margin: 1px;
+}
 
- body {
+.login-form-header {
+	padding-top: 16px;
+}
+
+.login-from-row {
+	padding-left: 8px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+
+.login-form-font-header {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.login-form-font-header span {
+	color: #007c9b;
+}
+
+body {
 	font-family: 'Varela Round', sans-serif;
 }
 .form-control {
-	box-shadow: none;		
+	box-shadow: none;
 	font-weight: normal;
 	font-size: 13px;
 }
@@ -66,7 +63,7 @@
 	padding-right: 50px;
 }
 .navbar .navbar-brand b {
-	color: #33cabb;		
+	color: #33cabb;
 }
 .navbar .form-inline {
 	display: inline-block;
@@ -77,12 +74,12 @@
 }
 .search-box {
 	position: relative;
-}	
+}
 .search-box input {
 	padding-right: 35px;
 	border-color: #dfe3e8;
 	border-radius: 4px !important;
-	box-shadow: none
+	box-shadow: none;
 }
 .search-box .input-group-text {
 	min-width: 35px;
@@ -107,19 +104,15 @@
 	font-weight: normal;
 	border-radius: 1px;
 	border-color: #e5e5e5;
-	box-shadow: 0 2px 8px rgba(0,0,0,.05);
-
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 .navbar .dropdown-menu1 {
-	
-	
 	border-color: #e5e5e5;
-	box-shadow: 0 2px 8px rgba(0,0,0,.05);
-
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-
-.navbar a, .navbar a:active {
+.navbar a,
+.navbar a:active {
 	color: #888;
 	padding: 8px 20px;
 	background: transparent;
@@ -135,26 +128,29 @@
 	right: 0;
 	font-size: 14px;
 }
-.navbar .action-form a {		
+.navbar .action-form a {
 	color: #33cabb;
 	padding: 0 !important;
 	font-size: 14px;
 }
 .navbar .action-form .hint-text {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 13px;
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 13px;
 }
-.navbar .btn-primary, .navbar .btn-primary:active {
+.navbar .btn-primary,
+.navbar .btn-primary:active {
 	color: #fff;
 	background: #33cabb !important;
 	border: none;
-}	
-.navbar .btn-primary:hover, .navbar .btn-primary:focus {		
+}
+.navbar .btn-primary:hover,
+.navbar .btn-primary:focus {
 	color: #fff;
 	background: #31bfb1 !important;
 }
-.navbar .social-btn .btn, .navbar .social-btn .btn:hover {
+.navbar .social-btn .btn,
+.navbar .social-btn .btn:hover {
 	color: #fff;
 	margin: 0;
 	padding: 0 !important;
@@ -212,20 +208,19 @@
 	position: relative;
 	top: 1px;
 }
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
 	.form-inline .input-group {
 		width: 300px;
 		margin-left: 30px;
-      position: absolute;
+		position: absolute;
 	}
 }
-@media (max-width: 319px){
+@media (max-width: 319px) {
 	.navbar .dropdown-menu.action-form {
 		width: 100%;
 		padding: 10px 15px;
 		background: transparent;
 		border: none;
-     
 	}
 	.navbar .form-inline {
 		display: block;
@@ -236,41 +231,41 @@
 }
 
 .img-2 {
+	width: 100%;
+	padding: auto;
+	margin: 1px;
+	/* background-repeat: no-repeat; */
+	/* background-size: 100%; */
+}
 
-   width: 100%;
-   padding: auto;
-   margin: 1px;
-   /* background-repeat: no-repeat; */
-   /* background-size: 100%; */
- }
-
- .App{
-	overflow: hidden;
-  overflow-y: unset;
-  overflow-x: hidden;
- }
-
- .no-scroll{
+.App {
 	overflow: hidden;
 	overflow-y: unset;
 	overflow-x: hidden;
+}
 
- }
+.no-scroll {
+	overflow: hidden;
+	overflow-y: unset;
+	overflow-x: hidden;
+}
 
- .mis-repos{
-	 margin: 20px;
- }
- .lista{
+.mis-repos {
+	margin: 20px;
+}
+.lista {
 	margin: 10px;
 }
 
-h1{
+h1 {
 	font-size: 20vw;
 }
-.estilo-x { font-size: calc(1em + 1vw) }
+.estilo-x {
+	font-size: calc(1em + 1vw);
+}
 
-.input2{
+.input2 {
 	background-color: #fff;
-	
-    border: white;
+
+	border: white;
 }
