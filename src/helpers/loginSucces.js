@@ -1,7 +1,5 @@
-// import setData from '../components/localStorage';
 import Swal from 'sweetalert2';
 import { createUser, iniciarSesion } from './login';
-// import comprobar from '../components/comprobacion';
 
 let obj = [];
 
@@ -57,6 +55,4 @@ export const signUp = (user, password) => {
 	}
 	const formulario = document.querySelector('#fnewUsuario');
 	formulario.reset();
-
-	
 };
