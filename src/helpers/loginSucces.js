@@ -33,26 +33,34 @@ export const loginSucces = (user, password) => {
 	return visibilidad;
 };
 
-export const signUp = (user, password) => {
-	let validador = createUser(user);
+export const signUp = (name, password) => {
+	let validador = createUser(name);
 
 	let newUsuario = {
 		id: Date.now(),
-		nom: user,
-		cont: password,
+		name: name,
+		password: password,
 	};
 
 	if (validador.estado === true) {
-		obj.push(newUsuario);
-		localStorage.setItem('usuarios', JSON.stringify(obj));
+		if (localStorage.getItem('usuarios') === null) {
+			localStorage.setItem('usuarios', JSON.stringify(obj));
+		}
 
+		const newStorage = JSON.parse(localStorage.getItem('usuarios'));
+		newStorage.push(newUsuario);
+		localStorage.setItem('usuarios', JSON.stringify(newStorage));
+		console.log('lleno');
 		Swal.fire({
 			icon: 'success',
 			title: 'Te has registrado',
 		});
 	} else {
 		Swal.fire('Ya se encuentra registrado');
+
+		console.log('lleno222222');
 	}
+
 	const formulario = document.querySelector('#fnewUsuario');
 	formulario.reset();
 };

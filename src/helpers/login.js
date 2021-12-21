@@ -6,24 +6,21 @@ export const iniciarSesion = (user, password) => {
 	};
 
 	arreglo = JSON.parse(localStorage.getItem('usuarios'));
-	
+
 	if (arreglo === null) {
 		validador.estado = true;
 	} else {
 		arreglo.map((usuarios) => {
-			if (usuarios.nom === user && usuarios.cont === password) {
-				
+			if (usuarios.name === user && usuarios.password === password) {
 				validador.estado = false;
 				validador.idUser = arreglo.indexOf(usuarios);
 			}
 		});
-
-		
 	}
 	return validador;
 };
 
-export const createUser = (user, ) => {
+export const createUser = (name) => {
 	let arreglo = [];
 	let validador = {
 		estado: true,
@@ -31,19 +28,18 @@ export const createUser = (user, ) => {
 	};
 
 	arreglo = JSON.parse(localStorage.getItem('usuarios'));
-	
+
 	if (arreglo === null) {
 		validador.estado = true;
 	} else {
 		arreglo.map((usuarios) => {
-			if (usuarios.nom === user ) {
-				
+			if (usuarios.name === name) {
+				console.log('1');
 				validador.estado = false;
-				
 			}
 		});
-
-		
 	}
+
+	console.log(validador);
 	return validador;
 };
