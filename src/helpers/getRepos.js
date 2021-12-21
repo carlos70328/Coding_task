@@ -1,10 +1,10 @@
-export const getRepos = async (user) => {
-	const url = `https://api.github.com/users/${encodeURI(user)}/repos`;
+export const getRepos = async (name) => {
+	const url = `https://api.github.com/users/${encodeURI(name)}/repos`;
 	const resp = await fetch(url);
 	const data = await resp.json();
-		
-	if (data === null){
-		return 
+
+	if (data.message === 'Not Found') {
+		return;
 	}
 
 	const listRepo = data.map((data) => {
@@ -12,10 +12,9 @@ export const getRepos = async (user) => {
 			id: data.id,
 			name: data.name,
 			description: data.description,
-			img: data.owner.avatar_url
+			img: data.owner.avatar_url,
 		};
 	});
 
-	
 	return listRepo;
 };

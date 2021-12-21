@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import CodingTest from './CodingTest';
 import './login.css';
 
 ReactDOM.render(
   
-    <App />,
+    <CodingTest />,
   
   document.getElementById('root')
 );
 
 
-reportWebVitals();
