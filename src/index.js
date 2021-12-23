@@ -4,10 +4,7 @@ import CodingTest from './CodingTest';
 import './login.css';
 
 ReactDOM.render(
-  
-    <CodingTest />,
-  
-  document.getElementById('root')
+	<CodingTest />,
+
+	document.getElementById('root'),
 );
-
-

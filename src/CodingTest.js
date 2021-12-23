@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { loginSucces, signUp } from './helpers/loginSucces';
+import { loginSucces, newSignUp } from './helpers/loginSucces';
 import { getRepos } from './helpers/getRepos';
 import { useForm } from './hooks/useForm';
 import Imagen from './components/carga';
@@ -24,19 +24,24 @@ function CodingTest() {
 			.then((repos) => {
 				setRepositorios(repos);
 			})
-			.catch((error) => console.log(error));
+			.catch(console.log);
 	}, [userSection]);
 
 	const login = (e) => {
 		e.preventDefault();
-		const visibilidad = loginSucces(name, password);
+		const visibility = loginSucces(name, password, e);
 
-		if (visibilidad.user === false) {
+		if (visibility.user === false) {
 			return;
 		}
-		setUserSection(visibilidad.user);
-		setHomeSection(visibilidad.home);
-		idUser = visibilidad.idUser;
+		setUserSection(visibility.user);
+		setHomeSection(visibility.home);
+		idUser = visibility.idUser;
+	};
+
+	const signUp = (e) => {
+		e.preventDefault();
+		newSignUp(name, password, e);
 	};
 
 	const cerrarSesion = (e) => {
@@ -102,12 +107,7 @@ function CodingTest() {
 								Sign up
 							</a>
 							<div className='dropdown-menu action-form'>
-								<form
-									id='fnewUsuario'
-									onSubmit={(e) => {
-										signUp(name, password);
-									}}
-								>
+								<form id='fnewUsuario' onSubmit={signUp}>
 									<p className='hint-text'>
 										Crea una cuenta usanto tu usuario de GitHub
 									</p>

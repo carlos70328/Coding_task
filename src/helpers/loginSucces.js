@@ -3,38 +3,37 @@ import { createUser, iniciarSesion } from './login';
 
 let obj = [];
 
-let visibilidad = {
+let visibility = {
 	user: true,
 	home: false,
 	idUser: 0,
 };
 
-export const loginSucces = (user, password) => {
-	const validador = iniciarSesion(user, password);
+export const loginSucces = (user, password, e) => {
+	const validator = iniciarSesion(user, password);
 
-	visibilidad.idUser = validador.idUser;
+	visibility.idUser = validator.idUser;
 
-	if (validador.estado === false) {
+	if (validator.estado === false) {
 		Swal.fire({
 			icon: 'success',
 			title: 'Bienvenido',
 		});
-		visibilidad.user = true;
-		visibilidad.home = false;
+		visibility.user = true;
+		visibility.home = false;
 	} else {
 		Swal.fire('Datos incorrectos', 'intente nuevamente', 'question');
-		visibilidad.user = false;
-		visibilidad.home = true;
+		visibility.user = false;
+		visibility.home = true;
 	}
 
-	const formulario = document.querySelector('#fnewUsuario');
-	formulario.reset();
+	e.target.reset();
 
-	return visibilidad;
+	return visibility;
 };
 
-export const signUp = (name, password) => {
-	let validador = createUser(name);
+export const newSignUp = (name, password, e) => {
+	let validator = createUser(name);
 
 	let newUsuario = {
 		id: Date.now(),
@@ -42,7 +41,7 @@ export const signUp = (name, password) => {
 		password: password,
 	};
 
-	if (validador.estado === true) {
+	if (validator.estado === true) {
 		if (localStorage.getItem('usuarios') === null) {
 			localStorage.setItem('usuarios', JSON.stringify(obj));
 		}
@@ -50,17 +49,14 @@ export const signUp = (name, password) => {
 		const newStorage = JSON.parse(localStorage.getItem('usuarios'));
 		newStorage.push(newUsuario);
 		localStorage.setItem('usuarios', JSON.stringify(newStorage));
-		console.log('lleno');
+
 		Swal.fire({
 			icon: 'success',
 			title: 'Te has registrado',
 		});
 	} else {
 		Swal.fire('Ya se encuentra registrado');
-
-		console.log('lleno222222');
 	}
 
-	const formulario = document.querySelector('#fnewUsuario');
-	formulario.reset();
+	e.target.reset();
 };
