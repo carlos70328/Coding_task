@@ -1,44 +1,91 @@
-import React from "react";
-import "../login.css";
-// import setData2 from "./localStorage2"
+import React, { useEffect } from 'react';
+import { useFav } from '../hooks/useFav.js';
+import './listarRepos.css';
 
-const listarRepo = (repos) => {
-    let a = repos.n
-    let array = repos.repos
+let reposFavo = [];
 
+const ListarRepo = ({ repos = [], idUser }) => {
+	const { reposFav, AddFavorites, RemoveFavorites } = useFav();
 
-    const mostraFavoritos = (e) => {
-        e.preventDefault()
-        console.log("funciona")
+	useEffect(() => {}, [reposFav]);
 
-    }
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-                    <h1 className="mis-repos estilo-x">Mis repositorios</h1>
-                    {array[a] && <img className="img-fluid border" src={array[a].owner.avatar_url} alt="avatar" />
-                    }
-                    <ul>
-                    {array.map((usuario, index) => {
-                        // setData2(usuario.name, usuario.description, usuario.owner.repos_url, index)
-                        return (
-                            <form key={index}  onSubmit={mostraFavoritos}>
-                                <li className="lista input2" >
-                                    <input className="input2" type="submit" value={usuario.name} ></input>
-                                    <p>{usuario.description}</p></li></form>)
-                    })}</ul>
-                </div>
-                <div className="col-md-6" id="lista-favoritos">
-                    <h1 className="mis-repos estilo-x">Mis Favoritos</h1>
-                    <div className="border">
-                        <li>deberia estar mis favoritos</li>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+	const mostraFavoritos = (e, index, repos) => {
+		e.preventDefault();
 
-}
+		reposFavo = AddFavorites(index, repos);
+	};
+	const quitarFavoritos = (e, index) => {
+		e.preventDefault();
 
-export default listarRepo
+		reposFavo = RemoveFavorites(index);
+	};
+
+	return (
+		<div className='container'>
+			<div className='row'>
+				<div className='col-md-6'>
+					<h1 className='mis-repos estilo-x'>
+						Mis repositorios {repos.length}
+					</h1>
+					{repos[idUser] && (
+						<img
+							className='img-fluid border'
+							src={repos[idUser].img}
+							alt='avatar'
+						/>
+					)}
+					<ul className='list-group list-group-flush'>
+						{repos.map((user, index) => (
+							<li key={index} id={user.id} className='list-group-item'>
+								<h6>
+									<p
+										id={index}
+										type='submit'
+										onClick={(e) => mostraFavoritos(e, index, repos)}
+									>
+										{user.name}
+									</p>
+
+									<p> - {user.description}</p>
+								</h6>
+							</li>
+						))}
+					</ul>
+				</div>
+				<div className='col-md-6' id='lista-favoritos'>
+					<h1 className='mis-repos estilo-x'>
+						Mis Favoritos {reposFavo.length}
+					</h1>
+					<div>
+						<ul>
+							Mis Repositorios favoritos
+							{reposFavo.length > 0 &&
+								reposFavo.map((user, index) => (
+									<li
+										key={index}
+										id={user.id}
+										className='list-group-item border'
+									>
+										<h6>
+											<p
+												className='quitar-repo'
+												type='submit'
+												onClick={(e) => quitarFavoritos(e, index)}
+											>
+												X
+											</p>
+											<p id={index}>{user.name}</p>
+
+											<p>{user.description}</p>
+										</h6>
+									</li>
+								))}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default ListarRepo;
