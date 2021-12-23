@@ -15,14 +15,14 @@ function CodingTest() {
 		name: '',
 		password: '',
 	});
-	const [repositorios, setRepositorios] = useState([]);
+	const [repositories, setRepositories] = useState([]);
 
 	const { name, password } = formValues;
 
 	useEffect(() => {
 		getRepos(name)
 			.then((repos) => {
-				setRepositorios(repos);
+				setRepositories(repos);
 			})
 			.catch(console.log);
 	}, [userSection]);
@@ -44,7 +44,7 @@ function CodingTest() {
 		newSignUp(name, password, e);
 	};
 
-	const cerrarSesion = (e) => {
+	const logOut = (e) => {
 		e.preventDefault();
 		setHomeSection(true);
 		setUserSection(false);
@@ -143,7 +143,7 @@ function CodingTest() {
 					{userSection && (
 						<div className='nav-item dropdown'>
 							<div className='dropdown-menu1'>
-								<form id='fnewUsuari' type='submit' onSubmit={cerrarSesion}>
+								<form id='fnewUsuari' type='submit' onSubmit={logOut}>
 									<input
 										type='submit'
 										className='btn btn-primary btn-block'
@@ -156,7 +156,7 @@ function CodingTest() {
 				</div>
 			</nav>
 			{homeSection && <Imagen />}
-			{userSection && <ListarRepo repos={repositorios} idUser={idUser} />}
+			{userSection && <ListarRepo repos={repositories} idUser={idUser} />}
 		</div>
 	);
 }

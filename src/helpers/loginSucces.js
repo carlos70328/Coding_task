@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { createUser, iniciarSesion } from './login';
+import { createUser, login } from './login';
 
 let obj = [];
 
@@ -10,11 +10,11 @@ let visibility = {
 };
 
 export const loginSucces = (user, password, e) => {
-	const validator = iniciarSesion(user, password);
+	const validator = login(user, password);
 
 	visibility.idUser = validator.idUser;
 
-	if (validator.estado === false) {
+	if (validator.state === false) {
 		Swal.fire({
 			icon: 'success',
 			title: 'Bienvenido',
@@ -41,7 +41,7 @@ export const newSignUp = (name, password, e) => {
 		password: password,
 	};
 
-	if (validator.estado === true) {
+	if (validator.state === true) {
 		if (localStorage.getItem('usuarios') === null) {
 			localStorage.setItem('usuarios', JSON.stringify(obj));
 		}

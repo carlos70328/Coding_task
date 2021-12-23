@@ -9,12 +9,12 @@ const ListarRepo = ({ repos = [], idUser }) => {
 
 	useEffect(() => {}, [reposFav]);
 
-	const mostraFavoritos = (e, index, repos) => {
+	const showFavorites = (e, index, repos) => {
 		e.preventDefault();
 
 		reposFavo = AddFavorites(index, repos);
 	};
-	const quitarFavoritos = (e, index) => {
+	const hideFavorites = (e, index) => {
 		e.preventDefault();
 
 		reposFavo = RemoveFavorites(index);
@@ -41,7 +41,7 @@ const ListarRepo = ({ repos = [], idUser }) => {
 									<p
 										id={index}
 										type='submit'
-										onClick={(e) => mostraFavoritos(e, index, repos)}
+										onClick={(e) => showFavorites(e, index, repos)}
 									>
 										{user.name}
 									</p>
@@ -70,7 +70,7 @@ const ListarRepo = ({ repos = [], idUser }) => {
 											<p
 												className='quitar-repo'
 												type='submit'
-												onClick={(e) => quitarFavoritos(e, index)}
+												onClick={(e) => hideFavorites(e, index)}
 											>
 												X
 											</p>
