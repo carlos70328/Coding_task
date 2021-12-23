@@ -1,45 +1,44 @@
 export const iniciarSesion = (user, password) => {
-	let arreglo = [];
-	let validador = {
+	// const arreglo = [];
+	const validator = {
 		estado: true,
 		idUser: 0,
 	};
 
-	arreglo = JSON.parse(localStorage.getItem('usuarios'));
+	const arreglo = JSON.parse(localStorage.getItem('usuarios'));
 
 	if (arreglo === null) {
-		validador.estado = true;
+		validator.estado = true;
 	} else {
 		arreglo.map((usuarios) => {
 			if (usuarios.name === user && usuarios.password === password) {
-				validador.estado = false;
-				validador.idUser = arreglo.indexOf(usuarios);
+				validator.estado = false;
+				validator.idUser = arreglo.indexOf(usuarios);
 			}
+			return true;
 		});
 	}
-	return validador;
+	return validator;
 };
 
 export const createUser = (name) => {
-	let arreglo = [];
-	let validador = {
+	const validator = {
 		estado: true,
 		idUser: 0,
 	};
 
-	arreglo = JSON.parse(localStorage.getItem('usuarios'));
+	const arreglo = JSON.parse(localStorage.getItem('usuarios'));
 
 	if (arreglo === null) {
-		validador.estado = true;
+		validator.estado = true;
 	} else {
 		arreglo.map((usuarios) => {
 			if (usuarios.name === name) {
-				console.log('1');
-				validador.estado = false;
+				validator.estado = false;
 			}
+			return true;
 		});
 	}
 
-	console.log(validador);
-	return validador;
+	return validator;
 };
